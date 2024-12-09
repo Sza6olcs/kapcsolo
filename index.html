@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Képváltás kattintásra</title>
+    <style>
+        #lightbulb {
+            width: 200px; /* Kép szélessége */
+            cursor: pointer; /* Kéz ikon a képen */
+            align-items: center; /* Függőleges középre igazítás */
+            justify-content: center; /* Vízszintes középre igazítás */
+        }
+        body {
+            
+            display: grid;  /* Rácsos elrendezés */
+            height: 100vh; /* A teljes magasság */
+            grid-template-columns: auto; /* Egy oszlop */
+            grid-template-rows: auto 1fr; /* Egy sor a címnek, egy sor a képnek */
+            justify-items: center; /* Vízszintes középre igazítás */
+            justify-content: center; /* Vízszintes középre igazítás */
+            align-items: center; /* Függőleges középre igazítás */
+            background-color: black; /* Háttérszín */
+        }
+        h2 {
+            color: white; /* Szöveg színe */
+        }
+        img {
+            border-radius: 50%; /* Kerekített sarkok */
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+<h2>Kattints a villanykörte ki/be kapcsolásához!</h2>
+<img id="lightbulb" src="villanykörte_ki.jpg" alt="Villanykörte ki" onclick="toggleLight()">
+
+<script>
+    let isLightOn = false; // Kezdetben a villanykörte ki van kapcsolva
+
+    function toggleLight() {
+        const lightbulb = document.getElementById("lightbulb");
+        if (isLightOn) {
+            lightbulb.src = "villanykörte_ki.jpg"; // Villanykörte ki
+            lightbulb.alt = "Villanykörte ki";
+            
+            
+        } else {
+            lightbulb.src = "villanykörte_be.jpg"; // Villanykörte be
+            lightbulb.alt = "Villanykörte be";
+        }
+        isLightOn = !isLightOn; // Állapot váltás
+        
+    }
+</script>
+    
+</body>
