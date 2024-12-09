@@ -3,57 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Képváltás kattintásra</title>
+    <title>Körte BeKi</title>
     <style>
-        #lightbulb {
-            width: 200px; /* Kép szélessége */
-            cursor: pointer; /* Kéz ikon a képen */
-            align-items: center; /* Függőleges középre igazítás */
-            justify-content: center; /* Vízszintes középre igazítás */
+        #villanykorte {
+            width: 200px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: box-shadow 0.3s ease; 
         }
         body {
-            
-            display: grid;  /* Rácsos elrendezés */
-            height: 100vh; /* A teljes magasság */
-            grid-template-columns: auto; /* Egy oszlop */
-            grid-template-rows: auto 1fr; /* Egy sor a címnek, egy sor a képnek */
-            justify-items: center; /* Vízszintes középre igazítás */
-            justify-content: center; /* Vízszintes középre igazítás */
-            align-items: center; /* Függőleges középre igazítás */
-            background-color: black; /* Háttérszín */
+            display: grid;
+            height: 100vh;
+            grid-template-columns: auto;
+            grid-template-rows: auto 1fr;
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
         }
         h2 {
-            color: white; /* Szöveg színe */
+            color: white;
         }
-        img {
-            border-radius: 50%; /* Kerekített sarkok */
+        .nincs-feny {
+            box-shadow: 0 0 1px 1px rgba(171, 170, 170, 0.5);
         }
-        
-        
+        .van-feny {
+            box-shadow: 0 0 50px 50px rgba(171, 170, 170, 0.7); 
+        }
     </style>
 </head>
 <body>
 
-<h2>Kattints a villanykörte ki/be kapcsolásához!</h2>
-<img id="lightbulb" src="villanykörte_ki.jpg" alt="Villanykörte ki" onclick="toggleLight()">
+<h2>Kattints a villanykörtére ki/be kapcsoláshoz!</h2>
+<img    id="villanykorte" 
+        src="villanykörte_ki.jpg" 
+        alt="Villanykörte ki" 
+        onclick="toggleLight()" 
+        class="nincs-feny">
 
 <script>
-    let isLightOn = false; // Kezdetben a villanykörte ki van kapcsolva
+    let isLightOn = false;
 
     function toggleLight() {
-        const lightbulb = document.getElementById("lightbulb");
+        const lightbulb = document.getElementById("villanykorte");
         if (isLightOn) {
-            lightbulb.src = "villanykörte_ki.jpg"; // Villanykörte ki
+            lightbulb.src = "villanykörte_ki.jpg";
             lightbulb.alt = "Villanykörte ki";
-            
-            
+            lightbulb.classList.remove("van-feny");
+            lightbulb.classList.add("nincs-feny");
         } else {
-            lightbulb.src = "villanykörte_be.jpg"; // Villanykörte be
+            lightbulb.src = "villanykörte_be.jpg";
             lightbulb.alt = "Villanykörte be";
+            lightbulb.classList.remove("nincs-feny");
+            lightbulb.classList.add("van-feny");
         }
-        isLightOn = !isLightOn; // Állapot váltás
-        
+        isLightOn = !isLightOn;
     }
 </script>
     
 </body>
+</html>
